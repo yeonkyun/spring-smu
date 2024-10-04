@@ -8,9 +8,18 @@ import edu.sunmoon.repository.CustomerRepository;
 public class CustomerService implements SMService<String, Customer> {
     SMRepository<String, Customer> repository;
 
-    public CustomerService() {
-        this.repository = new CustomerRepository();
+    public void setRepository(SMRepository<String, Customer> repository) {
+        this.repository = repository;
+        System.out.println("ConnectionPool: Create()");
     }
+
+//    public CustomerService() {
+//        this.repository = new CustomerRepository();
+//    }
+//
+//    public CustomerService(SMRepository<String, Customer> repository) {
+//        this.repository = repository;
+//    }
 
     @Override
     public void register(Customer customer) {
