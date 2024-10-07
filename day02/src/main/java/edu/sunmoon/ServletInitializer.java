@@ -1,4 +1,4 @@
-package edu.sunmoon.day02;
+package edu.sunmoon;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

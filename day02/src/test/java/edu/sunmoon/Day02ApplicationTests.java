@@ -1,4 +1,4 @@
-package edu.sunmoon.day02;
+package edu.sunmoon;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
