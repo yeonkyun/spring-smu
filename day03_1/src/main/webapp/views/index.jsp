@@ -138,6 +138,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#transaction" aria-expanded="false"
+                       aria-controls="transaction">
+                        <i class="typcn typcn-th-large menu-icon"></i>
+                        <span class="menu-title">상품 관리</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="transaction">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="<c:url value="//administrator/products"/>">상품 목록</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="<c:url value="//administrator/products/add"/>">상품 추가</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false"
                        aria-controls="error">
                         <i class="typcn typcn-globe-outline menu-icon"></i>
