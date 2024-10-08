@@ -1,0 +1,856 @@
+@font-face {
+    font-family: 'EF_jejudoldam';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Pretendard-Regular', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
+
+.logo img {
+    max-width: 120px;
+    height: auto;
+}
+
+.navmenu {
+    display: flex;
+    /*나란히*/
+}
+
+.navmenu a {
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all .42s ease;
+    /*42초 동안 움직임*/
+}
+
+.navmenu a:hover {
+    color: #ee1c4e;
+    /*커서 놨을때 색상변화*/
+}
+
+.nav-iocon {
+    display: flex;
+    align-items: center;
+}
+
+.nav-iocon i {
+    margin-right: 20px;
+    color: #2c2c2c;
+    font-size: 25px;
+    font-weight: 400;
+    transition: all .42s ease;
+}
+
+/*색상변화&확대*/
+.nav-iocon i:hover {
+    transform: scale(1.1);
+    color: #ee1c4e;
+}
+
+#menu-icon {
+    font-size: 35px;
+    color: #2c2c2c;
+    z-index: 10001;
+    /*요소의 쌓임 순서(z-order)를 지정*/
+    cursor: pointer;
+    /*마우스 커서의 모양을 포인터로 변경하는 CSS 속성*/
+}
+
+section {
+    padding: 5% 10%;
+}
+
+.main-home {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/images/banner-3.png);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+.main-text h5 {
+    color: #ee1c4e;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.main-text h1 {
+    color: #000;
+    font-size: 65px;
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 6px 0 10px;
+}
+
+.main-text p {
+    color: #333c56;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.main-btn {
+    display: inline-block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 2px solid #111;
+    padding: 12px 25px;
+    transition: all .42s ease;
+}
+
+.main-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.main-btn i {
+    vertical-align: middle;
+}
+
+.down-arrow {
+    position: absolute;
+    top: 85%;
+    right: 11%;
+}
+
+.down i {
+    font-size: 30px;
+    color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 50px;
+    padding: 12px 12px;
+}
+
+.down i:hover {
+    background-color: #2c2c2c;
+    color: #fff;
+    transition: all .42s ease;
+}
+
+/*창 아래로 스크롤 시 헤더 그림자*/
+header.sticky {
+    background: #fff;
+    padding: 20px 10%;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+}
+
+/*trending-section-css*/
+.center-text h2 {
+    color: #111;
+    font-size: 28px;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.center-text span {
+    color: #ee1c4e;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    gap: 2rem;
+}
+
+.row {
+    position: relative;
+    transition: all .40s;
+}
+
+.row img {
+    width: 100%;
+    height: auto;
+    transition: all .40s;
+}
+
+.row img:hover {
+    transform: scale(0.9);
+}
+
+.product-text h5 {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #27b737;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+.heart-icon {
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+}
+
+.heart-icon:hover {
+    color: #ee1c4e;
+}
+
+.ratting i {
+    color: #ff8c00;
+    font-size: 18px;
+}
+
+.price h4 {
+    color: #111;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.price p {
+    color: #151515;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
+/* contact-section */
+.contact {
+    background-color: #f3f4f6;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 3rem;
+    align-items: start;
+    /* Align items to the start */
+}
+
+.contact-logo {
+    width: 100%;
+    /* Ensure the logo scales with the container */
+    max-width: 140px;
+    /* Maintain the width constraint */
+    height: auto;
+}
+
+.first-info {
+    width: 140px;
+    height: auto;
+}
+
+.second-info,
+.third-info,
+.fourth-info,
+.five {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Align to start for consistent height */
+}
+
+.contact-info h4 {
+    color: #212121;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: #565656;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .42s;
+}
+
+.contact-info p:hover {
+    columns: #EE1C47;
+}
+
+.social-icon i {
+    color: #565656;
+    margin-right: 10px;
+    font-size: 20px;
+    transform: all .42s;
+}
+
+.social-icon i:hover {
+    /* 커서 올려두면 아이콘 확대 */
+    transform: scale(1.3);
+}
+
+.end-text p {
+    color: black;
+    text-transform: capitalize;
+}
+
+/* Responsive-css */
+@media(max-width:890px) {
+    header {
+        padding: 20px 3%;
+        transition: .4s;
+    }
+}
+
+@media(max-width:630px) {
+    .main-text h1 {
+        font-size: 50px;
+        transition: .4s;
+    }
+
+    .main-text p {
+        font-size: 18px;
+        transform: .4s;
+    }
+
+    .main-btn {
+        padding: 10px 20px;
+        transition: .4s;
+    }
+}
+
+@media(max-width:750px) {
+    .navmenu {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 300px;
+        height: 130vh;
+        background: #edfff1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 120px 30px;
+        transition: all .42s;
+    }
+
+    .navmenu a {
+        display: block;
+        margin: 18px 0;
+    }
+
+    .navmenu.open {
+        right: 0;
+    }
+}
+
+/* Login Page Styles */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+    padding: 0 10%;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #111;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #111;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #ee1c4e;
+}
+
+.register-link {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #ee1c4e;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* shopping */
+
+.shop-banner {
+    background: linear-gradient(to bottom, #ffffff, #ffffff);
+    padding: 40px 0;
+    color: black;
+    text-align: center;
+}
+
+.banner-text h1 {
+    font-family: 'EF_jejudoldam', sans-serif;
+    margin-top: 100px;
+    color: #000;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.banner-text p {
+    font-family: 'EF_jejudoldam', sans-serif;
+    color: #ee1c4e;
+    font-size: 18px;
+}
+
+/* Filter Section */
+.filter {
+    padding: 20px 10%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.filter h3 {
+    color: #111;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.filter-option {
+    margin-bottom: 15px;
+}
+
+.filter-option h4 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.filter-option select,
+.filter-option input[type="range"] {
+    width: 100%;
+}
+
+#priceValue {
+    text-align: center;
+    margin-top: 5px;
+    color: #111;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 10%;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info h4 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.product-info {
+    padding: 10px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* 아이템을 아래쪽으로 정렬 */
+    align-items: center;
+    /* 수평 가운데 정렬 */
+}
+
+.product-info .btn {
+    background-color: #ee1c4e;
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px !important;
+    /* important 속성 사용 */
+}
+
+
+.product-info .btn:hover {
+    /* 구매 버튼 커서 색상 바뀜 */
+    background-color: #d41e5a;
+}
+
+/* addProduct */
+
+.add-product-form {
+    margin-top: 100px;
+    padding: 50px 10%;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+}
+
+.add-product-form .container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.add-product-form h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.add-product-form label {
+    color: #555;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-product-form input,
+.add-product-form select,
+.add-product-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-product-form button.btn {
+    background-color: #ee1c4e;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.add-product-form button.btn:hover {
+    background-color: #d41e5a;
+}
+
+
+/* register.html */
+
+.signup-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-body {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.register-body .form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-body .form-group label,
+.register-body .form-group input {
+    width: 100%;
+    max-width: 800px;
+}
+
+.register-body .form-group button:hover {
+    color: #d41e5a;
+}
+
+/* 유저 프로필 css */
+.addProduct {
+    font-family: 'EF_jejudoldam', sans-serif;
+}
+
+.profile-products {
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    margin-left: 10%;
+    /* 왼쪽 마진 추가 */
+    overflow: hidden;
+    /* 넘치는 내용 숨기기 */
+}
+
+.profile-section {
+    flex: 0 0 250px;
+    /* 고정된 너비 설정 */
+    height: 50vh;
+    /* 고정된 높이 설정 */
+    /* overflow-y: auto; 내용이 넘칠 경우 스크롤 가능 */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    margin-right: 40px;
+    margin-top: 55px;
+    text-align: center;
+    /* 내용의 텍스트를 가운데 정렬 */
+}
+
+.eth-address {
+    word-wrap: break-word;
+    /* 긴 문자열을 칸 너비에 맞게 줄바꿈 */
+    overflow-wrap: break-word;
+    /* 긴 문자열을 칸 너비에 맞게 줄바꿈 */
+    word-break: break-all;
+    /* 필요한 경우 단어를 중간에서 줄바꿈 */
+}
+
+.added-products {
+    flex: 1;
+    overflow-y: auto;
+    height: 100vh;
+    padding-right: 20px;
+}
+
+
+
+.profile-section h2 {
+    margin-top: 0;
+}
+
+.added-products h2 {
+    margin-top: 0;
+    margin-right: 50%;
+    text-align: right;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+    justify-content: flex-start;
+    /* 왼쪽 정렬 */
+    margin-left: 0;
+    /* 왼쪽 마진 제거 */
+    padding-left: 0;
+    /* 왼쪽 패딩 제거 */
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 220px;
+    /* 상품 카드의 가로 크기를 220px로 설정 */
+    height: 260px;
+    /* 상품 카드의 세로 크기를 260px로 증가 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    /* 각 상품 카드 사이의 간격 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* 버튼이 아래쪽에 위치하도록 설정 */
+}
+
+
+
+.product-card img {
+    width: 100%;
+    /* 이미지가 카드 너비에 맞게 조정 */
+    height: 100px;
+    /* 이미지의 높이를 100px로 설정 */
+    object-fit: cover;
+    /* 이미지가 비율을 유지하며 영역을 채움 */
+    flex-shrink: 0;
+    /* 이미지가 축소되지 않도록 설정 */
+}
+
+
+.product-info {
+    padding: 10px;
+    text-align: center;
+    flex-grow: 1;
+    /* 남은 공간을 모두 채우도록 설정 */
+}
+
+.btn {
+    background-color: #ee1c4e;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    border: none;
+}
+
+.btn:hover {
+    /* 구매 버튼 커서 색상 바뀜 */
+    background-color: #d41e5a;
+}
+
+/* item detail */
+.card-img-top {
+    width: 100%;
+    /* 부모 요소의 너비에 맞추기 */
+    height: auto;
+    /* 비율을 유지하며 크기를 조정 */
+    max-height: 600px;
+    /* 원하는 최대 높이로 설정, 필요에 따라 조정 */
+    object-fit: contain;
+    /* 이미지 비율을 유지하며 전체 크기를 조정 */
+}
+
+
+/* footer고정을 위한 css */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1;
+}
+
+.end-text {
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* 유저 로그인,회원가입 디자인 */
+.btnUser {
+    background-color: #fff;
+    color: black;
+    padding: 10px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+    border: none;
+}
+
+.btnUser:hover {
+    background-color: gainsboro;
+    color: black;
+}

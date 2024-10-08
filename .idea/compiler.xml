@@ -20,5 +20,9 @@
         <module name="day03.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="edu.sunmoon.day03_1.main" target="17" />
+      <module name="edu.sunmoon.day03_1.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
