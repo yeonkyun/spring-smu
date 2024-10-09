@@ -19,8 +19,8 @@
     <!-- 사용자 정의 CSS -->
     <link rel="stylesheet" href="<c:url value="/css/administrator.css"/>">
     <!-- CSS -->
-    <link rel="stylesheet" href="<c:url value="/vendors/typicons.font/font/typicons.css"/>">
-    <link rel="stylesheet" href="<c:url value="/vendors/css/vendor.bundle.base.css"/>">
+    <link rel="stylesheet"
+          href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.1.2/typicons.min.css"/>">
 
     <!-- favicon -->
     <link rel="shortcut icon" href="<c:url value="/images/favicon.png"/>"/>
@@ -146,9 +146,11 @@
                     </a>
                     <div class="collapse" id="transaction">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="<c:url value="//administrator/products"/>">상품 목록</a>
+                            <li class="nav-item"><a class="nav-link" href="<c:url value="//administrator/products"/>">상품
+                                목록</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="<c:url value="//administrator/products/add"/>">상품 추가</a>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/products/add"/>">상품 추가</a>
                             </li>
                         </ul>
                     </div>
@@ -289,7 +291,6 @@
 <script src="<c:url value="/js/template.js"/>"></script>
 
 <!-- 페이지별 플러그인 JavaScript -->
-<script src="<c:url value="/vendors/chart.js/Chart.min.js"/>"></script>
 
 <!-- 전역 변수 -->
 <script>
