@@ -21,6 +21,15 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/javascript/javascript3" />">자바스크립트 3</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/javascript/javascript4" />">자바스크립트 4</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/javascript/javascript5" />">자바스크립트 5</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/javascript/javascript6" />">자바스크립트 6</a>
+        </li>
     </ul>
     <hr class="d-sm-none">
 </div>

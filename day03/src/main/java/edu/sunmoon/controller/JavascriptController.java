@@ -41,4 +41,28 @@ public class JavascriptController {
         model.addAttribute("center", dir + "javascript3");
         return "index";
     }
+
+    @RequestMapping("/javascript4")
+    public String javascript4(Model model) {
+        log.info("javascript4 page called");
+        model.addAttribute("left", dir + "left");
+        model.addAttribute("center", dir + "javascript4");
+        return "index";
+    }
+
+    @RequestMapping("/javascript5")
+    public String javascript5(Model model) {
+        log.info("javascript5 page called");
+        model.addAttribute("left", dir + "left");
+        model.addAttribute("center", dir + "javascript5");
+        return "index";
+    }
+
+    @RequestMapping("/javascript6")
+    public String javascript6(Model model) {
+        log.info("javascript6 page called");
+        model.addAttribute("left", dir + "left");
+        model.addAttribute("center", dir + "javascript6");
+        return "index";
+    }
 }

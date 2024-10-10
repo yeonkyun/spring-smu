@@ -9,6 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div class="col-sm-9">
+<div class="col-sm-9 mx-auto">
     <h2>자바스크립트 실습</h2>
 </div>
