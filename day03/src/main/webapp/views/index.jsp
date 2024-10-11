@@ -41,6 +41,11 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-auto">
+            <c:if test="${sessionScope.loginid != null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/customer" />">고객</a>
+                </li>
+            </c:if>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/javascript" />">자바스크립트</a>
             </li>
@@ -56,9 +61,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/about" />">더보기</a>
             </li>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link" href="/">링크</a>--%>
-<%--            </li>--%>
+            <%--            <li class="nav-item">--%>
+            <%--                <a class="nav-link" href="/">링크</a>--%>
+            <%--            </li>--%>
         </ul>
         <c:choose>
             <c:when test="${sessionScope.loginid == null}">
@@ -70,7 +75,6 @@
                         <a class="nav-link" href="<c:url value='/register' />">회원가입</a>
                     </li>
                 </ul>
-
             </c:when>
             <c:otherwise>
                 <ul class="nav m">
