@@ -45,6 +45,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/customer" />">고객</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/product" />">상품</a>
+                </li>
             </c:if>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/javascript" />">자바스크립트</a>
