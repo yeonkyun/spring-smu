@@ -61,23 +61,24 @@
 <%--            </li>--%>
         </ul>
         <c:choose>
-            <c:when test="${not empty user_id}">
-                <ul class="nav m">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/myinfo?id=${user_id}' />">${user_name}님</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/logout' />">로그아웃</a>
-                    </li>
-                </ul>
-            </c:when>
-            <c:otherwise>
+            <c:when test="${sessionScope.loginid == null}">
                 <ul class="nav m">
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value='/login' />">로그인</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value='/register' />">회원가입</a>
+                    </li>
+                </ul>
+
+            </c:when>
+            <c:otherwise>
+                <ul class="nav m">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='#' />">${sessionScope.loginid}님</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='/logoutimpl' />">로그아웃</a>
                     </li>
                 </ul>
             </c:otherwise>
