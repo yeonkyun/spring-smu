@@ -11,6 +11,8 @@ public class MainController {
     @RequestMapping("/")
     public String main(Model model) {
         log.info("main() called");
+//        model.addAttribute("userName", "관리자");
+//        model.addAttribute("userType", "admin");
         return "index";
     }
 

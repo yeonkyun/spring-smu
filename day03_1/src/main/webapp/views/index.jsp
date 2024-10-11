@@ -32,15 +32,15 @@
     <!-- 네비게이션 바 -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="<c:url value="//administrator"/>"><img
+            <a class="navbar-brand brand-logo" href="<c:url value="/"/>"><img
                     src="<c:url value="/images/logo.svg"/>" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="<c:url value="//administrator"/>"><img
+            <a class="navbar-brand brand-logo-mini" href="<c:url value="/"/>"><img
                     src="<c:url value="/images/logo-mini.svg"/>" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <ul class="navbar-nav mr-lg-2">
                 <li class="nav-item  d-none d-lg-flex">
-                    <a class="nav-link" href="<c:url value="//"/>">
+                    <a class="nav-link" href="<c:url value="/"/>">
                         메인 페이지
                     </a>
                 </li>
@@ -78,7 +78,7 @@
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle  pl-0 pr-0" href="#" data-toggle="dropdown" id="profileDropdown">
                         <i class="typcn typcn-user-outline mr-0"></i>
-                        <span class="nav-profile-name">${user_name}님</span>
+                        <span class="nav-profile-name">${userName}님</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item" href="<c:url value="//logout"/>">
@@ -98,6 +98,11 @@
 
     <div class="container-fluid page-body-wrapper">
         <!-- 사이드바 -->
+<%--        <c:choose>--%>
+<%--            <c:when test="${sidebar == null}">--%>
+<%--                <jsp:include page="sidebar.jsp"/>--%>
+<%--            </c:when>--%>
+<%--        </c:choose>--%>
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
@@ -124,14 +129,14 @@
                     <p class="sidebar-menu-title">관리자 메뉴</p>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="//administrator"/>">
+                    <a class="nav-link" href="<c:url value="/"/>">
                         <i class="typcn typcn-device-desktop menu-icon"></i>
                         <span class="menu-title">대시보드</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="//administrator/users"/>">
+                    <a class="nav-link" href="<c:url value="/user"/>">
                         <i class="typcn typcn-user-outline menu-icon"></i>
                         <span class="menu-title">사용자 정보 관리</span>
                         <i class="menu-arrow"></i>
@@ -141,16 +146,76 @@
                     <a class="nav-link" data-toggle="collapse" href="#transaction" aria-expanded="false"
                        aria-controls="transaction">
                         <i class="typcn typcn-th-large menu-icon"></i>
-                        <span class="menu-title">상품 관리</span>
+                        <span class="menu-title">주문 관리</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="transaction">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/transactions"/>">주문
+                                목록</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/transactions/add"/>">주문 추가</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/transactions/modify"/>">주문
+                                수정</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/transactions/delete"/>">주문
+                                삭제</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
+                       aria-controls="product">
+                        <i class="typcn typcn-th-large menu-icon"></i>
+                        <span class="menu-title">상품 관리</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="<c:url value="//administrator/products"/>">상품
                                 목록</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
                                                     href="<c:url value="//administrator/products/add"/>">상품 추가</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/products/modify"/>">상품 수정</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/products/delete"/>">상품 삭제</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/products/review"/>">상품 리뷰</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#coupon" aria-expanded="false"
+                       aria-controls="coupon">
+                        <i class="typcn typcn-th-large menu-icon"></i>
+                        <span class="menu-title">쿠폰 관리</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="coupon">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="<c:url value="//administrator/coupons"/>">쿠폰
+                                목록</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/coupons/add"/>">쿠폰 추가</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/coupons/modify"/>">쿠폰 수정</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="<c:url value="//administrator/coupons/delete"/>">쿠폰 삭제</a>
                             </li>
                         </ul>
                     </div>
@@ -190,93 +255,15 @@
         </nav>
         <!-- 사이드바 끝 -->
 
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h3 class="mb-0 font-weight-bold">&nbsp;</h3>
-                        <p>&nbsp;</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center justify-content-md-end">
-                            <div class="mb-3 mb-xl-0 pr-1">
-                                <div class="dropdown">
-                                    <button class="btn bg-white btn-sm dropdown-toggle btn-icon-text border mr-2"
-                                            type="button"
-                                            id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        <i class="typcn typcn-calendar-outline mr-2"></i>추가 예정
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton3"
-                                         data-x-placement="top-start">
-                                        <h6 class="dropdown-header">추가 예정</h6>
-                                        <a class="dropdown-item" href="#">추가 예정</a>
-                                        <a class="dropdown-item" href="#">추가 예정</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pr-1 mb-3 mr-2 mb-xl-0">
-                                <button id="export_btn" type="button" class="btn btn-sm bg-white btn-icon-text border">
-                                    <i
-                                            class="typcn typcn-arrow-forward-outline mr-2"></i>내보내기
-                                </button>
-                            </div>
-                            <div class="pr-1 mb-3 mb-xl-0">
-                                <button type="button" class="btn btn-sm bg-white btn-icon-text border"><i
-                                        class="typcn typcn-info-large-outline mr-2"></i>정보
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 d-flex grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-9">
-                                        <div class="chart-container mt-4">
-                                            <!-- 차트 생성 부분 -->
-                                            <canvas id="areachart-multi"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="mt-4">
-                                            <div class="d-flex mb-3">
-                                                <div class="text-success font-weight-bold today-date"></div>
-                                                <div class="text-success font-weight-bold">&nbsp;기준 거래 데이터</div>
-                                            </div>
-                                            <hr>
-                                            <div class="d-flex justify-content-between mb-3">
-                                                <div class="font-weight-medium">금일 거래 완료 수</div>
-                                                <div class="text-muted" id="today-successed"></div>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-3">
-                                                <div class="font-weight-medium">금일 거래 실패 수</div>
-                                                <div class="text-muted" id="today-failed"></div>
-                                            </div>
-                                            <hr>
-                                            <div class="mt-4">
-                                                <div class="d-flex justify-content-between mb-3">
-                                                    <div class="font-weight-medium">총 거래 완료 수</div>
-                                                    <div class="text-muted" id="total-successed"></div>
-                                                </div>
-                                                <div class="d-flex justify-content-between mb-3">
-                                                    <div class="font-weight-medium">총 거래 실패 수</div>
-                                                    <div class="text-muted" id="total-failed"></div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- content-wrapper 끝 -->
-        </div>
+        <!-- 메인 패널 -->
+        <c:choose>
+            <c:when test="${mainPanel == null}">
+                <jsp:include page="main-panel.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <jsp:include page="${mainPanel}.jsp"/>
+            </c:otherwise>
+        </c:choose>
         <!-- main-panel 끝 -->
     </div>
     <!-- page-body-wrapper 끝 -->
@@ -292,17 +279,10 @@
 
 <!-- 페이지별 플러그인 JavaScript -->
 
-<!-- 전역 변수 -->
-<script>
-    var chartData = ${chartData};
-</script>
-
 <!-- 페이지별 사용자 정의 JavaScript -->
-<script src="<c:url value="/js/dashboard.js"/>"></script>
-<script src="<c:url value="/js/chart.js"/>"></script>
 <%--</c:if>--%>
 <%--<c:if test="${userType != 'admin' && userType != 'manager'}">--%>
-<%--    <c:import url="/WEB-INF/views/error-404.jsp"/>--%>
+<%--    <c:import url="/404"/>--%>
 <%--</c:if>--%>
 </body>
 
