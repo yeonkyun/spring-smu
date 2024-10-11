@@ -21,6 +21,9 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/ajax/ajax3" />">AJAX 3</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/ajax/workshop" />">워크숍</a>
+        </li>
     </ul>
     <hr class="d-sm-none">
 </div>
