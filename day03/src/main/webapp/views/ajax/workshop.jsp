@@ -19,10 +19,8 @@
     <table class="table table-hover text-center align-middle" id="table">
         <thead class="thead-dark">
         <tr>
-            <th>#</th>
-            <th>아이디</th>
-            <th>이름</th>
-            <th>나이</th>
+
+        </tr>
         </thead>
         <tbody>
         <c:choose>
@@ -34,9 +32,7 @@
             <c:otherwise>
                 <c:forEach var="user" items="${users}">
                     <tr>
-                        <td>${user.id}</td>
-                        <td>${user.name}</td>
-                        <td>${user.age}</td>
+
                     </tr>
                 </c:forEach>
             </c:otherwise>
