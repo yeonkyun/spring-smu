@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -48,5 +49,16 @@ public class AjaxRestController {
         }
         log.info("서버에서 반환하는 데이터: {}", jsonArray.toJSONString()); // Log the data
         return jsonArray;
+    }
+
+    @RequestMapping("/checkid")
+    public Object checkid(@RequestParam("rid") String id) {
+        JSONObject obj = new JSONObject();
+        if (id.equals("aaaa") || id.equals("aaaaa")) {
+            obj.put("result", "1");
+        } else {
+            obj.put("result", "0");
+        }
+        return obj;
     }
 }

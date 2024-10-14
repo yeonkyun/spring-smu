@@ -2,6 +2,7 @@ package edu.sunmoon.controller;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,20 +17,29 @@ public class MainInputController {
         model.addAttribute("id", id);
         model.addAttribute("pw", pw);
 
-        if(id.equals("aaa") && pw.equals("111")){
+        if (id.equals("aaa") && pw.equals("111")) {
             session.setAttribute("loginid", id);
-            model.addAttribute("center","loginok");
-        }else{
-            model.addAttribute("center","loginfail");
+            model.addAttribute("center", "loginok");
+        } else {
+            model.addAttribute("center", "loginfail");
         }
         return "redirect:/";
     }
 
     @RequestMapping("/logoutimpl")
     public String logoutimpl(HttpSession session, Model model) {
-        if(session != null){
+        if (session != null) {
             session.invalidate();
         }
+        return "redirect:/";
+    }
+
+    @RequestMapping("/registerimpl")
+    public String loginimpl(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw, @RequestParam("name") String name, HttpSession session) {
+        log.info("id: {}, pw: {}, name: {}", id, pw, name);
+        session.setAttribute("loginid", id);
+        model.addAttribute("name", name);
+        model.addAttribute("center", "registerok");
         return "redirect:/";
     }
 }
