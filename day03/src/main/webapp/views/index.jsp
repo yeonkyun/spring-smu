@@ -29,7 +29,7 @@
         }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <div class="text-center bg-dark text-white" style="padding: 50px">
     <h1 onclick="location.href='<c:url value="/"/>'" style="cursor: pointer;">SW몰입형 학기제 연습장</h1>
@@ -94,7 +94,7 @@
     </div>
 </nav>
 
-<div class="container" style="margin-top:30px">
+<div class="container flex-grow-1" style="margin-top:30px">
     <div class="row">
         <c:choose>
             <c:when test="${left == null}">
@@ -115,9 +115,10 @@
     </div>
 </div>
 
-<div class="jumbotron text-center" style="margin-top: 30px">
-    <p>Footer</p>
-</div>
-
+<footer>
+    <div class="text-center bg-dark text-white" style="margin-top: 30px; padding: 40px">
+        <p>SW몰입형 학기제 연습장</p>
+    </div>
+</footer>
 </body>
 </html>
