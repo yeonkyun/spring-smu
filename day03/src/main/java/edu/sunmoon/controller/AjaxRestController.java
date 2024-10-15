@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @Slf4j
@@ -85,5 +86,23 @@ public class AjaxRestController {
 
         }
         return markers;
+    }
+
+    @RequestMapping("/getbike")
+    public Object getbike() {
+        JSONObject obj = new JSONObject();
+        // 36.800269, 127.074960
+        double lat = 36.800269;
+        double lng = 127.074960;
+
+        // 소수점 3번째 자리 변경
+        Random random = new Random();
+        lat += random.nextInt(1000) / 1000000.0;
+        lng += random.nextInt(1000) / 1000000.0;
+
+        obj.put("lat", lat);
+        obj.put("lng", lng);
+
+        return obj;
     }
 }

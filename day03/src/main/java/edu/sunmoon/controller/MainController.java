@@ -1,6 +1,7 @@
 package edu.sunmoon.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +29,12 @@ public class MainController {
         return "index";
     }
 
+    @Value("${kakao.api.key}")
+    private String kakaoApiKey;
+
     @RequestMapping("/about")
     public String about(Model model) {
+        model.addAttribute("kakaoApiKey", kakaoApiKey);
         model.addAttribute("center", "about");
         log.info("about page called");
         return "index";
