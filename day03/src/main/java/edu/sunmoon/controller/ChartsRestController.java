@@ -4,9 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Random;
+import java.util.*;
 
 @RestController
 @Slf4j
@@ -29,5 +30,26 @@ public class ChartsRestController {
             jsonArray.add(jsonObject);
         }
         return jsonArray;
+    }
+
+    @RequestMapping("/workshop")
+    @ResponseBody
+    public Map<String, Map<Integer, List<Integer>>> workshop() {
+        Map<String, Map<Integer, List<Integer>>> salesData = new HashMap<>();
+        String[] genders = {"남자", "여자"};
+        Random random = new Random();
+
+        for (String gender : genders) {
+            Map<Integer, List<Integer>> yearData = new HashMap<>();
+            for (int year = 2020; year <= 2024; year++) {
+                List<Integer> monthlyData = new ArrayList<>();
+                for (int month = 0; month < 12; month++) {
+                    monthlyData.add(random.nextInt(4000) + 1000); // 1000 ~ 5000 사이의 랜덤 값
+                }
+                yearData.put(year, monthlyData);
+            }
+            salesData.put(gender, yearData);
+        }
+        return salesData;
     }
 }

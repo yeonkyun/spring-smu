@@ -21,6 +21,9 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/chart/chart3" />">차트 3</a>
         </li>
+        <li>
+            <a class="nav-link" href="<c:url value="/chart/workshop" />">워크숍</a>
+        </li>
     </ul>
     <hr class="d-sm-none">
 </div>

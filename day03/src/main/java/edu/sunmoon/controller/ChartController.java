@@ -41,4 +41,12 @@ public class ChartController {
         model.addAttribute("left", dir + "left");
         return "index";
     }
+
+    @RequestMapping("workshop")
+    public String workshop(Model model) {
+        log.info("chart workshop page called");
+        model.addAttribute("center", dir + "workshop");
+        model.addAttribute("left", dir + "left");
+        return "index";
+    }
 }
