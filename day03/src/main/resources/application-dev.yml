@@ -25,3 +25,7 @@ spring:
 logging:
   level:
     root: info
+app:
+  dir:
+    images: file:///Users/yeonkyun/IdeaProjects/spring-smu/images/
+    logs: file:///Users/yeonkyun/IdeaProjects/spring-smu/logs/

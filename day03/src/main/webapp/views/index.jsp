@@ -38,6 +38,8 @@
 
 <div class="text-center bg-dark text-white" style="padding: 50px">
     <h1 onclick="location.href='<c:url value="/"/>'" style="cursor: pointer;">SW몰입형 학기제 연습장</h1>
+<%--    <img src="<c:url value="/img/1000001.jpg"/> ">--%>
+<%--    <img src="<c:url value="/images/Apple%20May%20Event.png"/> ">--%>
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding-inline: 30px;">
