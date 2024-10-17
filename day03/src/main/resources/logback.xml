@@ -42,10 +42,10 @@
 
 
 
-    <logger name="org.springframework.web" level="DEBUG">
-        <appender-ref ref="STDOUT" />   // 콘솔에 출력
-        <appender-ref ref="FILE" />     // 파일에 출력
-    </logger>
+<!--    <logger name="org.springframework.web" level="DEBUG">-->
+<!--        <appender-ref ref="STDOUT" />   // 콘솔에 출력-->
+<!--        <appender-ref ref="FILE" />     // 파일에 출력-->
+<!--    </logger>-->
     <logger name="edu.sunmoon.controller.MainController" level="INFO">
         <appender-ref ref="FILE2" />
     </logger>
