@@ -1,4 +1,4 @@
-package edu.sunmoon.dto;
+package edu.sunmoon.app.dto;
 
 import lombok.Builder;
 import lombok.Data;

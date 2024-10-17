@@ -1,6 +1,6 @@
 package edu.sunmoon.controller;
 
-import edu.sunmoon.dto.Marker;
+import edu.sunmoon.app.dto.Marker;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

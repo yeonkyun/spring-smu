@@ -1,8 +1,7 @@
 package edu.sunmoon.controller;
 
-import edu.sunmoon.dto.Customer;
+import edu.sunmoon.app.dto.CustomerDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,13 +33,13 @@ public class CustomerController {
 
     @RequestMapping("/get")
     public String get(Model model) {
-        List<Customer> customers = new ArrayList<>();
-        customers.add(Customer.builder().id("id01").pw("pw01").name("홍길동").build());
-        customers.add(Customer.builder().id("id02").pw("pw02").name("김철수").build());
-        customers.add(Customer.builder().id("id03").pw("pw03").name("이영희").build());
-        customers.add(Customer.builder().id("id04").pw("pw04").name("박영수").build());
-        customers.add(Customer.builder().id("id05").pw("pw05").name("최영자").build());
-        model.addAttribute("customers", customers);
+        List<CustomerDTO> customersDTO = new ArrayList<>();
+        customersDTO.add(CustomerDTO.builder().id("id01").pw("pw01").name("홍길동").build());
+        customersDTO.add(CustomerDTO.builder().id("id02").pw("pw02").name("김철수").build());
+        customersDTO.add(CustomerDTO.builder().id("id03").pw("pw03").name("이영희").build());
+        customersDTO.add(CustomerDTO.builder().id("id04").pw("pw04").name("박영수").build());
+        customersDTO.add(CustomerDTO.builder().id("id05").pw("pw05").name("최영자").build());
+        model.addAttribute("customers", customersDTO);
 
         log.info("customer get page called");
         model.addAttribute("left", dir + "left");

@@ -19,7 +19,7 @@
             <th>이름</th>
         </thead>
         <tbody>
-        <c:forEach var="customer" items="${customers}">
+        <c:forEach var="customer" items="${customersDTO}">
             <tr>
 
                 <td>${customer.id}</td>

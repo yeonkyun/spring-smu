@@ -1,12 +1,11 @@
 package edu.sunmoon.controller;
 
-import edu.sunmoon.dto.Product;
+import edu.sunmoon.app.dto.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
