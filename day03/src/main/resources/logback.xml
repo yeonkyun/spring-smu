@@ -32,7 +32,21 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS_DIR}/custinfo.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <fileNamePattern>${LOGS_DIR}/jsinfo.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE3" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/power.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/power.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>5MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -46,6 +60,11 @@
 <!--        <appender-ref ref="STDOUT" />   // 콘솔에 출력-->
 <!--        <appender-ref ref="FILE" />     // 파일에 출력-->
 <!--    </logger>-->
+
+    <logger name="edu.sunmoon.controller.IotRestController" level="INFO">
+        <appender-ref ref="FILE3" />
+    </logger>
+
     <logger name="edu.sunmoon.controller.MainController" level="INFO">
         <appender-ref ref="FILE2" />
     </logger>

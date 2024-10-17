@@ -12,7 +12,7 @@ public class IotRestController {
 
     @RequestMapping("/power")
     public Object receiveData(@RequestBody String data) {
-        log.info(data + " receiveData");
+        log.info(data);
         return 1;
     }
 

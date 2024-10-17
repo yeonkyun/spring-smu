@@ -10,11 +10,11 @@ public class Main {
         String data = "100";
 
         Random random = new Random();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             float num = random.nextFloat() * 100;
             HttpSendData.send(url, num + "");
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
