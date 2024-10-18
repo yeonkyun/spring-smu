@@ -46,6 +46,12 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
     implementation'com.mysql:mysql-connector-j'
 
+    // Mysql handler
+    implementation 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
+
+    // logback
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
     // test
     testImplementation 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
