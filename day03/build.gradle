@@ -52,6 +52,9 @@ dependencies {
     // logback
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 
+    // Properties Encrypt
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
+
     // test
     testImplementation 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
