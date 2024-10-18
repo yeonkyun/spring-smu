@@ -16,7 +16,7 @@ public class UpdateTest {
     @Test
     void contextLoads() {
         try {
-            customerService.modify(CustomerDTO.builder().id("id11").pw("pwd11").name("수정된 테스터").build());
+            customerService.modify(CustomerDTO.builder().customerId("id11").customerPw("pwd11").customerName("수정된 테스터").build());
             log.info(customerService.get("id11").toString());
         } catch (Exception e) {
             e.printStackTrace();

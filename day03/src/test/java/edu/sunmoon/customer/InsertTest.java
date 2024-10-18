@@ -16,7 +16,7 @@ public class InsertTest {
     @Test
     void contextLoads() {
         try {
-            customerService.add(CustomerDTO.builder().id("id11").pw("pwd11").name("테스터").build());
+            customerService.add(CustomerDTO.builder().customerId("id11").customerPw("pwd11").customerName("테스터").build());
         } catch (Exception e) {
             e.printStackTrace();
         }
