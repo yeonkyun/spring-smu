@@ -30,7 +30,7 @@ public class CustomerService implements SMService<String, CustomerDTO> {
 
     @Override
     public CustomerDTO get(String s) throws Exception {
-        return customerRepository.select(s);
+        return customerRepository.selectOne(s);
     }
 
     @Override

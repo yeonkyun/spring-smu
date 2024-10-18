@@ -14,7 +14,8 @@
         SELECT * FROM customer WHERE name LIKE CONCAT('%',#{name},'%')
     </select>
     <insert id="insert" parameterType="CustomerDTO">
-        INSERT INTO customer VALUES (#{id},#{pw},#{name})
+        INSERT INTO customer
+        VALUES (#{id}, #{pw}, #{name})
     </insert>
     <update id="update" parameterType="CustomerDTO">
         UPDATE customer SET pwd=#{pw},name=#{name} WHERE id=#{id}
