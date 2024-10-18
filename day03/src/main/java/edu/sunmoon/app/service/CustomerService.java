@@ -37,4 +37,8 @@ public class CustomerService implements SMService<String, CustomerDTO> {
     public List<CustomerDTO> get() throws Exception {
         return customerRepository.select();
     }
+
+    public List<CustomerDTO> getByName(String name) throws Exception {
+        return customerRepository.SelectByName(name);
+    }
 }

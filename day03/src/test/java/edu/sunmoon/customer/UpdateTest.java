@@ -6,34 +6,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.util.List;
 
 @SpringBootTest
 @Slf4j
-class SelectTest {
+public class UpdateTest {
     @Autowired
     CustomerService customerService;
 
     @Test
     void contextLoads() {
         try {
-            List<CustomerDTO> list = customerService.get();
-            for (CustomerDTO customerDTO : list) {
-                log.info(customerDTO.toString());
-            }
+            customerService.modify(CustomerDTO.builder().id("id11").pw("pwd11").name("수정된 테스터").build());
+            log.info(customerService.get("id11").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
-//
-//    @Test
-//    public void testConnection() {
-//        jdbcTemplate.execute("SELECT 1");
-//    }
-
-
 }
