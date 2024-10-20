@@ -19,7 +19,7 @@ class SelectTest {
     @Test
     void contextLoads() {
         try {
-            log.info(cartService.get().toString());
+            cartService.get();
         } catch (Exception e) {
             e.printStackTrace();
         }
