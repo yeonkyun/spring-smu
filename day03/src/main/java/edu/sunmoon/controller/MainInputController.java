@@ -1,6 +1,9 @@
 package edu.sunmoon.controller;
 
+import edu.sunmoon.app.dto.CustomerDTO;
+import edu.sunmoon.app.service.CustomerService;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -10,18 +13,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
+@RequiredArgsConstructor
 public class MainInputController {
+    final CustomerService customerService;
+
     @RequestMapping("/loginimpl")
     public String loginimpl(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw, HttpSession session) {
         log.info("id: {}, pw: {}", id, pw);
         model.addAttribute("id", id);
         model.addAttribute("pw", pw);
 
-        if (id.equals("aaa") && pw.equals("111")) {
-            session.setAttribute("loginid", id);
-            model.addAttribute("center", "loginok");
-        } else {
-            model.addAttribute("center", "loginfail");
+        CustomerDTO customerDTO = null;
+        try {
+            customerDTO = customerService.get(id);
+
+            if (customerDTO != null && customerDTO.getCustomerPw().equals(pw)) {
+                session.setAttribute("loginid", customerDTO);
+                model.addAttribute("center", "loginok");
+                return "redirect:/";
+            } else {
+                model.addAttribute("center", "loginfail");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
         return "redirect:/";
     }
@@ -35,10 +49,14 @@ public class MainInputController {
     }
 
     @RequestMapping("/registerimpl")
-    public String loginimpl(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw, @RequestParam("name") String name, HttpSession session) {
-        log.info("id: {}, pw: {}, name: {}", id, pw, name);
-        session.setAttribute("loginid", id);
-        model.addAttribute("name", name);
+    public String loginimpl(Model model, CustomerDTO customerDTO, HttpSession session) {
+        log.info("Customer Info: " + customerDTO.toString());
+        try {
+            customerService.add(customerDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        session.setAttribute("loginid", customerDTO);
         model.addAttribute("center", "registerok");
         return "redirect:/";
     }

@@ -76,14 +76,14 @@
     <h1 class="text-center" style="margin-bottom: 30px;">회원가입</h1>
     <form id="register_form">
         <div class="form-group">
-            <input type="text" class="form-control" id="id" placeholder="아이디" name="id">
+            <input type="text" class="form-control" id="id" placeholder="아이디" name="customerId">
             <span id="id_span"></span>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="pw" placeholder="비밀번호" name="pw">
+            <input type="password" class="form-control" id="pw" placeholder="비밀번호" name="customerPw">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="name" placeholder="이름" name="name">
+            <input type="text" class="form-control" id="name" placeholder="이름" name="customerName">
         </div>
         <button type="button" class="btn btn-primary btn-block" style="margin-bottom: 20px;">회원가입</button>
     </form>

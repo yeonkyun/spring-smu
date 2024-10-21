@@ -4,24 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.sunmoon.app.repository.CustomerRepository">
 
-    <select id="selectById" parameterType="String" resultType="CustomerDTO">
-        SELECT * FROM customer WHERE id=#{id}
+    <select id="selectOne" parameterType="String" resultType="CustomerDTO">
+        SELECT * FROM customer WHERE customer_id=#{customerId}
     </select>
     <select id="select" resultType="CustomerDTO">
         SELECT * FROM customer
     </select>
     <select id="SelectByName" parameterType="String" resultType="CustomerDTO">
-        SELECT * FROM customer WHERE name LIKE CONCAT('%',#{name},'%')
+        SELECT * FROM customer WHERE customer_name LIKE CONCAT('%',#{customerName},'%')
     </select>
     <insert id="insert" parameterType="CustomerDTO">
         INSERT INTO customer
-        VALUES (#{id}, #{pw}, #{name})
+        VALUES (#{customerId},#{customerPw},#{customerName})
     </insert>
     <update id="update" parameterType="CustomerDTO">
-        UPDATE customer SET pwd=#{pw},name=#{name} WHERE id=#{id}
+        UPDATE customer SET customer_pw=#{customerPw}, customer_name=#{customerName} WHERE customer_id=#{customerId}
     </update>
     <delete id="delete" parameterType="String">
-        DELETE FROM customer WHERE id=#{id}
+        DELETE FROM customer WHERE customer_id=#{customerId}
     </delete>
 
 </mapper>

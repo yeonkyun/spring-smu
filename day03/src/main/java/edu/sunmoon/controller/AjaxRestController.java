@@ -1,6 +1,9 @@
 package edu.sunmoon.controller;
 
+import edu.sunmoon.app.dto.CustomerDTO;
 import edu.sunmoon.app.dto.Marker;
+import edu.sunmoon.app.service.CustomerService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,7 +19,11 @@ import java.util.Random;
 
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class AjaxRestController {
+
+    final CustomerService customerService;
+
     @RequestMapping("/getctime")
     public Object getctime() {
         JSONObject obj = new JSONObject();
@@ -58,10 +65,16 @@ public class AjaxRestController {
     @RequestMapping("/checkid")
     public Object checkid(@RequestParam("rid") String id) {
         JSONObject obj = new JSONObject();
-        if (id.equals("aaaa") || id.equals("aaaaa")) {
-            obj.put("result", "1");
+        CustomerDTO customerDTO = null;
+        try {
+            customerDTO = customerService.get(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        if (customerDTO != null) {
+            obj.put("result", "NO");
         } else {
-            obj.put("result", "0");
+            obj.put("result", "OK");
         }
         return obj;
     }

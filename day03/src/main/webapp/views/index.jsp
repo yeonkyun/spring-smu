@@ -90,7 +90,7 @@
             <c:otherwise>
                 <ul class="nav m">
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='#' />">${sessionScope.loginid}님</a>
+                        <a class="nav-link" href="<c:url value='#' />">${sessionScope.loginid.customerName}님</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value='/logoutimpl' />">로그아웃</a>

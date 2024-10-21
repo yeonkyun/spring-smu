@@ -11,5 +11,5 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div class="col-sm-9 mx-auto">
     <h2>회원가입 완료</h2>
-    <h5>${name}님 회원가입이 완료되었습니다.</h5>
+    <h5>${sessionScope.loginid.customerName}님 회원가입을 환영합니다.</h5>
 </div>
