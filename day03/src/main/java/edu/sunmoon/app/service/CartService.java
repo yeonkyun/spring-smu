@@ -42,4 +42,8 @@ public class CartService implements SMService<Integer, CartDTO> {
         return cartRepository.selectByCustomerId(customerId);
     }
 
+    public List<CartDTO> getByItemName(CartDTO cartDTO) throws Exception {
+        return cartRepository.selectByItemName(cartDTO);
+    }
+
 }

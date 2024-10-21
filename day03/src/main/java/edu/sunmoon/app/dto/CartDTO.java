@@ -17,6 +17,8 @@ public class CartDTO {
     private int itemId;
     private int quantity;
     private LocalDateTime regDate;
-
-    private ItemDTO item;
+    private String itemName;
+    private String itemPrice;
+    private String imgName;
+//    private ItemDTO item;
 }

@@ -11,4 +11,5 @@ import java.util.List;
 @Mapper
 public interface CartRepository extends SMRepository<Integer, CartDTO> {
     List<CartDTO> selectByCustomerId(String customerId) throws Exception;
+    List<CartDTO> selectByItemName(CartDTO cartDTO) throws Exception;
 }

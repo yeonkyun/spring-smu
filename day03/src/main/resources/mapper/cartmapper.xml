@@ -3,48 +3,64 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.sunmoon.app.repository.CartRepository">
-
-
-
-    <select id="selectOne" parameterType="Integer" resultType="CartDTO">
-        SELECT * FROM cart WHERE cart_id=#{cartId}
-    </select>
     <resultMap id="cartResultMap" type="CartDTO">
-        <id property="cartId" column="cart_id"/>
-        <result property="customerId" column="customer_id"/>
-        <result property="itemId" column="item_id"/>
-        <result property="quantity" column="quantity"/>
-        <result property="regDate" column="creg_date"/>
+        <id column="cart_user_id" property="customerId"/>
+        <id column="cart_item_id" property="itemId"/>
+        <result column="cart_count" property="quantity"/>
+        <result column="cart_reg_date" property="regDate"/>
         <association property="item" javaType="ItemDTO">
-            <result property="itemId" column="item_id"/>
-            <result property="itemName" column="item_name"/>
-            <result property="itemPrice" column="item_price"/>
-            <result property="imgName" column="img_name"/>
-            <result property="regDate" column="ireg_date"/>
-            <result property="updateDate" column="iupdate_date"/>
+            <id column="item_id" property="itemId"/>
+            <result column="item_name" property="itemName"/>
+            <result column="item_price" property="itemPrice"/>
+            <result column="img_name" property="imgName"/>
+            <result column="reg_date" property="regDate"/>
+            <result column="update_date" property="updateDate"/>
         </association>
     </resultMap>
-    <select id="select" resultMap="cartResultMap">
-        select cart_id, customer_id, c.item_id, stock, c.reg_date as creg_date,
-               item_name, item_price, img_name, i.reg_date as ireg_date, update_date as iupdate_date
-        from cart c
-                 inner join item i on c.item_id = i.item_id
+
+    <select id="selectOne" parameterType="Integer" resultType="CartDTO">
+        SELECT * FROM cart WHERE cart_item_id = #{id}
     </select>
-    <select id="selectByCustomerId" parameterType="String" resultType="CartDTO">
-        SELECT * FROM cart WHERE customer_id=#{customerId}
+
+    <select id="select" resultMap="cartResultMap" fetchSize="100">
+        SELECT c.cart_user_id,
+               c.cart_item_id,
+               c.cart_count,
+               c.cart_reg_date,
+               i.item_id,
+               i.item_name,
+               i.item_price,
+               i.img_name,
+               i.reg_date,
+               i.update_date
+        FROM cart c
+                 INNER JOIN item i ON c.cart_item_id = i.item_id
     </select>
+
+    <select id="selectByItemName" parameterType="String" resultType="CartDTO">
+        SELECT cart_user_id, cart_item_id, cart_count, cart_reg_date, item_name, item_price, img_name
+        FROM cart
+                 INNER JOIN item ON cart_item_id = item_id
+        WHERE item_name LIKE CONCAT('%', #{name}, '%')
+          AND cart_user_id = #{customerId}
+    </select>
+
     <insert id="insert" parameterType="CartDTO">
-        INSERT INTO cart
-        VALUES (#{cartId}, #{customerId}, #{itemId}, #{quantity}, NOW(), NOW())
+        INSERT INTO cart (cart_user_id, cart_item_id, cart_count, cart_reg_date)
+        VALUES (#{customerId}, #{itemId}, #{quantity}, SYSDATE())
+            ON DUPLICATE KEY UPDATE cart_count = cart_count + #{quantity}
     </insert>
+
     <update id="update" parameterType="CartDTO">
         UPDATE cart
-        SET quantity=#{quantity},
-            update_date=NOW()
-        WHERE cart_id = #{cartId}
+        SET cart_count = #{quantity}
+        WHERE cart_user_id = #{customerId}
+          AND cart_item_id = #{itemId}
     </update>
-    <delete id="delete" parameterType="Integer">
-        DELETE FROM cart WHERE cart_id=#{cartId}
-    </delete>
 
+    <delete id="delete" parameterType="CartDTO">
+        DELETE FROM cart
+        WHERE cart_user_id = #{customerId}
+          AND cart_item_id = #{itemId}
+    </delete>
 </mapper>
