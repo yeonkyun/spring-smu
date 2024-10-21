@@ -19,12 +19,11 @@
             <th>이름</th>
         </thead>
         <tbody>
-        <c:forEach var="customer" items="${customersDTO}">
+        <c:forEach var="customer" items="${customers}">
             <tr>
-
-                <td>${customer.id}</td>
-                <td>${customer.pw}</td>
-                <td>${customer.name}</td>
+                <td><a href="/customer/detail?id=${customer.customerId}">${customer.customerId}</a></td>
+                <td>${customer.customerPw}</td>
+                <td>${customer.customerName}</td>
             </tr>
         </c:forEach>
         </tbody>
