@@ -1,5 +1,6 @@
 package edu.sunmoon.app.repository;
 
+import com.github.pagehelper.Page;
 import edu.sunmoon.app.dto.CustomerDTO;
 import edu.sunmoon.app.frame.SMRepository;
 import org.apache.ibatis.annotations.Mapper;
@@ -11,4 +12,5 @@ import java.util.List;
 @Mapper
 public interface CustomerRepository extends SMRepository<String, CustomerDTO> {
     List<CustomerDTO> SelectByName(String name) throws Exception;
+    Page<CustomerDTO> getpage() throws Exception;
 }

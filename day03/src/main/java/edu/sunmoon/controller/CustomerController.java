@@ -1,5 +1,6 @@
 package edu.sunmoon.controller;
 
+import com.github.pagehelper.PageInfo;
 import edu.sunmoon.app.dto.CustomerDTO;
 import edu.sunmoon.app.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,7 @@ public class CustomerController {
 
     @RequestMapping("/get")
     public String get(Model model) {
-        List<CustomerDTO> customersDTO = new ArrayList<>();
+        List<CustomerDTO> customersDTO = null;
         try {
             customersDTO = customerService.get();
         } catch (Exception e) {
@@ -51,6 +52,34 @@ public class CustomerController {
         model.addAttribute("center", dir + "get");
         return "index";
     }
+
+    @RequestMapping("/getpage")
+    public String page(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo, Model model) {
+        log.info("customer page page called");
+        PageInfo<CustomerDTO> customerPage = null;
+        try {
+            customerPage = new PageInfo<>(customerService.getPage(pageNo), 5);  // 5: 페이지 번호 갯수
+            model.addAttribute("customerPage", customerPage);
+            model.addAttribute("target", "/customer");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        model.addAttribute("left", dir + "left");
+        model.addAttribute("center", dir + "page");
+        return "index";
+    }
+
+    @RequestMapping("/search")
+    public String search(Model model) {
+        log.info("customer search page called");
+
+
+        model.addAttribute("left", dir + "left");
+        model.addAttribute("center", dir + "search");
+        return "index";
+    }
+
 
     @RequestMapping("/detail")
     public String add(Model model, @RequestParam("id") String id) {

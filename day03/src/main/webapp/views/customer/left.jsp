@@ -18,6 +18,12 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/customer/add" />">등록</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/customer/getpage" />">페이지</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/customer/search" />">검색</a>
+        </li>
     </ul>
     <hr class="d-sm-none">
 </div>

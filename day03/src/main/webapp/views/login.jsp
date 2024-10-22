@@ -47,10 +47,10 @@
     <h1 style="text-align: center; margin-bottom: 30px;">로그인</h1>
     <form id="login_form">
         <div class="form-group">
-            <input type="text" class="form-control" id="id" placeholder="아이디" name="id">
+            <input type="text" value="customer001" class="form-control" id="id" placeholder="아이디" name="id">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="pw" placeholder="비밀번호" name="pw">
+            <input type="password" value="password001" class="form-control" id="pw" placeholder="비밀번호" name="pw">
         </div>
         <button type="button" class="btn btn-primary btn-block" style="margin-bottom: 20px;">로그인</button>
     </form>
