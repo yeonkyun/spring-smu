@@ -2,6 +2,7 @@ package edu.sunmoon.controller;
 
 import com.github.pagehelper.PageInfo;
 import edu.sunmoon.app.dto.CustomerDTO;
+import edu.sunmoon.app.dto.Search;
 import edu.sunmoon.app.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,6 +75,23 @@ public class CustomerController {
     public String search(Model model) {
         log.info("customer search page called");
 
+
+        model.addAttribute("left", dir + "left");
+        model.addAttribute("center", dir + "search");
+        return "index";
+    }
+
+    @RequestMapping("/searchimpl")
+    public String searchimpl(Model model, Search search, @RequestParam(value = "pageNo", defaultValue = "1") int pageNo) {
+        log.info("customer searchimpl page called");
+        PageInfo<CustomerDTO> customerPage = null;
+        try {
+            customerPage = new PageInfo<>(customerService.getfindpage(search, pageNo), pageNo);
+            model.addAttribute("customerPage", customerPage);
+            model.addAttribute("target", "customer");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         model.addAttribute("left", dir + "left");
         model.addAttribute("center", dir + "search");

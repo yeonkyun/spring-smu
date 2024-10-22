@@ -3,6 +3,7 @@ package edu.sunmoon.app.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import edu.sunmoon.app.dto.CustomerDTO;
+import edu.sunmoon.app.dto.Search;
 import edu.sunmoon.app.frame.SMService;
 import edu.sunmoon.app.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,5 +48,10 @@ public class CustomerService implements SMService<String, CustomerDTO> {
     public Page<CustomerDTO> getPage(int pageNo) throws Exception {
         PageHelper.startPage(pageNo, 5);
         return customerRepository.getpage();
+    }
+
+    public Page<CustomerDTO> getfindpage(Search search, int pageNo) throws Exception {
+        PageHelper.startPage(pageNo, 5);
+        return customerRepository.getfindpage(search);
     }
 }

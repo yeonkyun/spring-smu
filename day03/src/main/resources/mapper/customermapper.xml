@@ -7,6 +7,11 @@
     <select id="getpage" resultType="CustomerDTO">
         SELECT * FROM customer
     </select>
+    <select id="getfindpage" resultType="CustomerDTO" parameterType="search">
+        SELECT * FROM customer WHERE 1=1
+        <if test="keyword == 'id'">AND customer_id LIKE CONCAT('%',#{search},'%')</if>
+        <if test="keyword == 'name'">AND customer_name LIKE CONCAT('%',#{search},'%')</if>
+    </select>
 
     <select id="selectOne" parameterType="String" resultType="CustomerDTO">
         SELECT * FROM customer WHERE customer_id=#{customerId}
