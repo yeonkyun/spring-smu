@@ -5,17 +5,22 @@
 <mapper namespace="edu.sunmoon.app.repository.ItemRepository">
 
     <select id="selectOne" parameterType="Integer" resultType="ItemDTO">
-        SELECT * FROM item WHERE item_id=#{itemId}
+        SELECT *
+        FROM item
+        WHERE item_id = #{itemId}
     </select>
     <select id="select" resultType="ItemDTO">
-        SELECT * FROM item
+        SELECT *
+        FROM item
     </select>
     <select id="SelectByName" parameterType="String" resultType="ItemDTO">
-        SELECT * FROM item WHERE item_name LIKE CONCAT('%',#{itemName},'%')
+        SELECT *
+        FROM item
+        WHERE item_name LIKE CONCAT('%', #{itemName}, '%')
     </select>
     <insert id="insert" parameterType="ItemDTO">
-        INSERT INTO item
-        VALUES (#{itemId}, #{itemName}, #{itemPrice}, #{imgName}, NOW(), NOW())
+        INSERT INTO item (item_name, item_price, img_name, reg_date, update_date)
+        VALUES (#{itemName}, #{itemPrice}, #{imgName}, NOW(), NOW())
     </insert>
     <update id="update" parameterType="ItemDTO">
         UPDATE item
@@ -26,6 +31,8 @@
         WHERE item_id = #{itemId}
     </update>
     <delete id="delete" parameterType="Integer">
-        DELETE FROM item WHERE item_id=#{itemId}
+        DELETE
+        FROM item
+        WHERE item_id = #{itemId}
     </delete>
 </mapper>
