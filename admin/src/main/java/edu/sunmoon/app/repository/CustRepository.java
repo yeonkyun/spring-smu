@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface CustomerRepository extends SMRepository<String, CustomerDTO> {
+public interface CustRepository extends SMRepository<String, CustomerDTO> {
     List<CustomerDTO> SelectByName(String name) throws Exception;
     Page<CustomerDTO> getpage() throws Exception;
     Page<CustomerDTO> getfindpage(Search search) throws Exception;

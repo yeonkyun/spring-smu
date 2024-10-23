@@ -5,7 +5,7 @@ import com.github.pagehelper.PageHelper;
 import edu.sunmoon.app.dto.CustomerDTO;
 import edu.sunmoon.app.dto.Search;
 import edu.sunmoon.app.frame.SMService;
-import edu.sunmoon.app.repository.CustomerRepository;
+import edu.sunmoon.app.repository.CustRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerService implements SMService<String, CustomerDTO> {
-    final CustomerRepository customerRepository;
+public class CustService implements SMService<String, CustomerDTO> {
+    final CustRepository customerRepository;
 
     @Override
     public void add(CustomerDTO customerDTO) throws Exception {
