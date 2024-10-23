@@ -1,0 +1,31 @@
+# Tomcat Server Setting
+server:
+  port: 81
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+# SpringBoot Environment Setting
+spring:
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .jsp
+
+# MyBatis Setting
+mybatis:
+  type-aliases-package: edu.sunmoon.app.dto
+  mapper-locations: classpath:/mapper/*.xml
+
+# Logging Setting
+logging:
+  level:
+    root: info
+
+# Application Environment Setting
+app:
+  dir:
+    images: file:///Users/yeonkyun/IdeaProjects/spring-smu/images/
+    logs: file:///Users/yeonkyun/IdeaProjects/spring-smu/logs/
+    readlogdir: /Users/yeonkyun/IdeaProjects/spring-smu/logs/

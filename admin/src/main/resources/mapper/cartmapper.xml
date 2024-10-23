@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sunmoon.app.repository.CartRepository">
+    <resultMap id="cartResultMap" type="CartDTO">
+        <id column="cart_user_id" property="customerId"/>
+        <id column="cart_item_id" property="itemId"/>
+        <result column="cart_count" property="quantity"/>
+        <result column="cart_reg_date" property="regDate"/>
+        <association property="item" javaType="ItemDTO">
+            <id column="item_id" property="itemId"/>
+            <result column="item_name" property="itemName"/>
+            <result column="item_price" property="itemPrice"/>
+            <result column="img_name" property="imgName"/>
+            <result column="reg_date" property="regDate"/>
+            <result column="update_date" property="updateDate"/>
+        </association>
+    </resultMap>
+
+    <select id="selectOne" parameterType="Integer" resultType="CartDTO">
+        SELECT * FROM cart WHERE cart_item_id = #{id}
+    </select>
+
+    <select id="select" resultMap="cartResultMap" fetchSize="100">
+        SELECT c.cart_user_id,
+               c.cart_item_id,
+               c.cart_count,
+               c.cart_reg_date,
+               i.item_id,
+               i.item_name,
+               i.item_price,
+               i.img_name,
+               i.reg_date,
+               i.update_date
+        FROM cart c
+                 INNER JOIN item i ON c.cart_item_id = i.item_id
+    </select>
+
+    <select id="selectByItemName" parameterType="String" resultType="CartDTO">
+        SELECT cart_user_id, cart_item_id, cart_count, cart_reg_date, item_name, item_price, img_name
+        FROM cart
+                 INNER JOIN item ON cart_item_id = item_id
+        WHERE item_name LIKE CONCAT('%', #{name}, '%')
+          AND cart_user_id = #{customerId}
+    </select>
+
+    <insert id="insert" parameterType="CartDTO">
+        INSERT INTO cart (cart_user_id, cart_item_id, cart_count, cart_reg_date)
+        VALUES (#{customerId}, #{itemId}, #{quantity}, SYSDATE())
+            ON DUPLICATE KEY UPDATE cart_count = cart_count + #{quantity}
+    </insert>
+
+    <update id="update" parameterType="CartDTO">
+        UPDATE cart
+        SET cart_count = #{quantity}
+        WHERE cart_user_id = #{customerId}
+          AND cart_item_id = #{itemId}
+    </update>
+
+    <delete id="delete" parameterType="CartDTO">
+        DELETE FROM cart
+        WHERE cart_user_id = #{customerId}
+          AND cart_item_id = #{itemId}
+    </delete>
+</mapper>
