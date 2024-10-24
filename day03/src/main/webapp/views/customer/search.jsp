@@ -41,7 +41,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="customer" items="${customerPage.list}">
+        <c:forEach var="customer" items="${pageInfo.list}">
             <tr>
                 <td><a href="/customer/detail?id=${customer.customerId}">${customer.customerId}</a></td>
                 <td>${customer.customerPw}</td>
@@ -50,7 +50,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <c:if test="${not empty customerPage.list}">
+    <c:if test="${not empty pageInfo.list}">
         <jsp:include page="../searchnav.jsp"/>
     </c:if>
 </div>

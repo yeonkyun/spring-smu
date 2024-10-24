@@ -1,6 +1,8 @@
 package edu.sunmoon.app.service;
 
+import com.github.pagehelper.PageHelper;
 import edu.sunmoon.app.dto.ItemDTO;
+import edu.sunmoon.app.dto.Search;
 import edu.sunmoon.app.frame.SMService;
 import edu.sunmoon.app.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +42,15 @@ public class ItemService implements SMService<Integer, ItemDTO> {
 
     public List<ItemDTO> getByName(String name) throws Exception {
         return itemRepository.SelectByName(name);
+    }
+
+    public List<ItemDTO> getpage(int pageNo) throws Exception {
+        PageHelper.startPage(pageNo, 5);
+        return itemRepository.getpage();
+    }
+
+    public List<ItemDTO> search(Search search, int pageNo) throws Exception {
+        PageHelper.startPage(pageNo, 5);
+        return itemRepository.search(search);
     }
 }

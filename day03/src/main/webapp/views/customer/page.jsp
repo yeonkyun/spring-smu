@@ -19,7 +19,7 @@
             <th>이름</th>
         </thead>
         <tbody>
-        <c:forEach var="customer" items="${customerPage.getList()}">
+        <c:forEach var="customer" items="${pageInfo.getList()}">
             <tr>
                 <td><a href="/customer/detail?id=${customer.customerId}">${customer.customerId}</a></td>
                 <td>${customer.customerPw}</td>

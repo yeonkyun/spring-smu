@@ -38,29 +38,29 @@ public class CustomerController {
         return "index";
     }
 
+//    @RequestMapping("/get")
+//    public String get(Model model) {
+//        List<CustomerDTO> customersDTO = null;
+//        try {
+//            customersDTO = customerService.get();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        log.info("customer get page called");
+//        model.addAttribute("customers", customersDTO);
+//        model.addAttribute("left", dir + "left");
+//        model.addAttribute("center", dir + "get");
+//        return "index";
+//    }
+
     @RequestMapping("/get")
-    public String get(Model model) {
-        List<CustomerDTO> customersDTO = null;
-        try {
-            customersDTO = customerService.get();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        log.info("customer get page called");
-        model.addAttribute("customers", customersDTO);
-        model.addAttribute("left", dir + "left");
-        model.addAttribute("center", dir + "get");
-        return "index";
-    }
-
-    @RequestMapping("/getpage")
     public String page(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo, Model model) {
         log.info("customer page page called");
-        PageInfo<CustomerDTO> customerPage = null;
+        PageInfo<CustomerDTO> pageInfo = null;
         try {
-            customerPage = new PageInfo<>(customerService.getPage(pageNo), 5);  // 5: 페이지 번호 갯수
-            model.addAttribute("customerPage", customerPage);
+            pageInfo = new PageInfo<>(customerService.getPage(pageNo), 5);  // 5: 페이지 번호 갯수
+            model.addAttribute("pageInfo", pageInfo);
             model.addAttribute("target", "/customer");
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -84,10 +84,10 @@ public class CustomerController {
     @RequestMapping("/searchimpl")
     public String searchimpl(Model model, Search search, @RequestParam(value = "pageNo", defaultValue = "1") int pageNo) {
         log.info("customer searchimpl page called");
-        PageInfo<CustomerDTO> customerPage = null;
+        PageInfo<CustomerDTO> pageInfo = null;
         try {
-            customerPage = new PageInfo<>(customerService.getfindpage(search, pageNo), pageNo);
-            model.addAttribute("customerPage", customerPage);
+            pageInfo = new PageInfo<>(customerService.getfindpage(search, pageNo), pageNo);
+            model.addAttribute("pageInfo", pageInfo);
             model.addAttribute("target", "customer");
         } catch (Exception e) {
             throw new RuntimeException(e);

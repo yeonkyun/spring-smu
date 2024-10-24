@@ -13,9 +13,9 @@
 <div class="col text-center">
     <ul class="pagination justify-content-center">
         <c:choose>
-            <c:when test="${customerPage.hasPreviousPage}">
+            <c:when test="${pageInfo.hasPreviousPage}">
                 <li class="page-item">
-                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="/${target}/searchimpl?pageNo=${customerPage.prePage}&keyword=${search.keyword}&search=${search.search}" />">이전</a>
+                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="/${target}/searchimpl?pageNo=${pageInfo.prePage}&keyword=${search.keyword}&search=${search.search}" />">이전</a>
                 </li>
             </c:when>
             <c:otherwise>
@@ -25,9 +25,9 @@
             </c:otherwise>
         </c:choose>
 
-        <c:forEach var="page" begin="1" end="${customerPage.pages}">
+        <c:forEach var="page" begin="1" end="${pageInfo.pages}">
             <c:choose>
-                <c:when test="${customerPage.pageNum == page}">
+                <c:when test="${pageInfo.pageNum == page}">
                     <li class="page-item active">
                         <a class="page-link bg-dark border-dark" href="<c:url value="/${target}/searchimpl?pageNo=${page}&keyword=${search.keyword}&search=${search.search}" />">${page}</a>
                     </li>
@@ -41,9 +41,9 @@
         </c:forEach>
 
         <c:choose>
-            <c:when test="${customerPage.hasNextPage}">
+            <c:when test="${pageInfo.hasNextPage}">
                 <li class="page-item">
-                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="/${target}/searchimpl?pageNo=${customerPage.nextPage}&keyword=${search.keyword}&search=${search.search}" />">다음</a>
+                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="/${target}/searchimpl?pageNo=${pageInfo.nextPage}&keyword=${search.keyword}&search=${search.search}" />">다음</a>
                 </li>
             </c:when>
             <c:otherwise>

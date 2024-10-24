@@ -14,9 +14,9 @@
 <div class="col text-center">
     <ul class="pagination justify-content-center">
         <c:choose>
-            <c:when test="${customerPage.getPrePage() != 0}">
+            <c:when test="${pageInfo.getPrePage() != 0}">
                 <li class="page-item">
-                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="${target}/getpage?pageNo=${customerPage.getPrePage()}" />">이전</a>
+                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="${target}/get?pageNo=${pageInfo.getPrePage()}" />">이전</a>
                 </li>
             </c:when>
             <c:otherwise>
@@ -26,25 +26,25 @@
             </c:otherwise>
         </c:choose>
 
-        <c:forEach begin="${customerPage.getNavigateFirstPage()}" end="${customerPage.getNavigateLastPage()}" var="page">
+        <c:forEach begin="${pageInfo.getNavigateFirstPage()}" end="${pageInfo.getNavigateLastPage()}" var="page">
             <c:choose>
-                <c:when test="${customerPage.getPageNum() == page}">
+                <c:when test="${pageInfo.getPageNum() == page}">
                     <li class="page-item active">
-                        <a class="page-link bg-dark border-dark" href="<c:url value="${target}/getpage?pageNo=${page}" />">${page}</a>
+                        <a class="page-link bg-dark border-dark" href="<c:url value="${target}/get?pageNo=${page}" />">${page}</a>
                     </li>
                 </c:when>
                 <c:otherwise>
                     <li class="page-item">
-                        <a class="page-link text-dark" href="<c:url value="${target}/getpage?pageNo=${page}" />">${page}</a>
+                        <a class="page-link text-dark" href="<c:url value="${target}/get?pageNo=${page}" />">${page}</a>
                     </li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
 
         <c:choose>
-            <c:when test="${customerPage.getNextPage() != 0}">
+            <c:when test="${pageInfo.getNextPage() != 0}">
                 <li class="page-item">
-                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="${target}/getpage?pageNo=${customerPage.getNextPage()}" />">다음</a>
+                    <a class="page-link bg-dark text-white border-dark" href="<c:url value="${target}/get?pageNo=${pageInfo.getNextPage()}" />">다음</a>
                 </li>
             </c:when>
             <c:otherwise>
