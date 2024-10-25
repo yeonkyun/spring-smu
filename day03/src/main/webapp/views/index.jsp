@@ -77,6 +77,9 @@
                 </li>
             </c:if>
             <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/webcam" />">웹캠</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/about" />">더보기</a>
             </li>
             <%--            <li class="nav-item">--%>

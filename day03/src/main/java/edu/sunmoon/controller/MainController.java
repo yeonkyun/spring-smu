@@ -1,14 +1,24 @@
 package edu.sunmoon.controller;
 
+import edu.sunmoon.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 @Slf4j
 public class MainController {
+
+    @Value("${app.dir.uploadimgdir}")
+    private String uploadImgDir;
+
     @RequestMapping("/")
     public String main(Model model) {
         log.info("index page called");
@@ -38,5 +48,20 @@ public class MainController {
         model.addAttribute("center", "about");
         log.info("about page called");
         return "index";
+    }
+
+    @RequestMapping("/webcam")
+    public String webcam(Model model) {
+        log.info("webcam page called");
+        model.addAttribute("center", "webcam");
+        return "index";
+    }
+
+    @RequestMapping("/saveimg")
+    @ResponseBody
+    public String saveimg(@RequestParam("file") MultipartFile file) throws IOException {
+        String imgname = file.getOriginalFilename();
+        FileUploadUtil.saveFile(file, uploadImgDir);
+        return imgname;
     }
 }
