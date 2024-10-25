@@ -3,14 +3,20 @@ package edu.sunmoon.controller;
 import edu.sunmoon.app.dto.CustomerDTO;
 import edu.sunmoon.app.dto.Marker;
 import edu.sunmoon.app.service.CustomerService;
+import edu.sunmoon.util.WeatherUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,6 +29,12 @@ import java.util.Random;
 public class AjaxRestController {
 
     final CustomerService customerService;
+
+    @Value("${api.key.weather}")
+    private String weatherApiKey;
+
+    @Value("${api.key.openWeather}")
+    private String openWeatherApiKey;
 
     @RequestMapping("/getctime")
     public Object getctime() {
@@ -117,5 +129,15 @@ public class AjaxRestController {
         obj.put("lng", lng);
 
         return obj;
+    }
+
+    @RequestMapping("/weather")
+    public Object weather(Model model) throws IOException, ParseException {
+        return WeatherUtil.getWeather("108", weatherApiKey);
+    }
+
+    @RequestMapping("/openWeather")
+    public Object openWeather(Model model) throws IOException, ParseException {
+        return WeatherUtil.getWeather2("1835848", openWeatherApiKey);
     }
 }
