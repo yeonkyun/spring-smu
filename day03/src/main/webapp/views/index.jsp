@@ -71,6 +71,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/chart" />">차트</a>
             </li>
+            <c:if test="${sessionScope.loginid != null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/cart" />">장바구니</a>
+                </li>
+            </c:if>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/about" />">더보기</a>
             </li>

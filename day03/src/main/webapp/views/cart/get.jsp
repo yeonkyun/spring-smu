@@ -1,0 +1,64 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: yeonkyun
+  Date: 24. 10. 24.
+  Time: 오전 11:28
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<div class="col-sm-9 mx-auto">
+    <h2 style="margin-bottom: 10px">상품 조회</h2>
+    <div class="row">
+        <div class="col">
+            <form action="<c:url value="/item/search" />" method="GET" class="form-inline justify-content-end">
+                <div class="form-group mb-2">
+                    <select class="form-control" name="keyword" id="searchType">
+                        <option value="name" <c:if test="${search.keyword == 'name'}">selected</c:if>>상품명</option>
+                        <option value="price" <c:if test="${search.keyword == 'price'}">selected</c:if>>가격</option>
+                        <option value="date" <c:if test="${search.keyword == 'date'}">selected</c:if>>날짜</option>
+                    </select>
+                </div>
+
+                <!-- 일반 검색 입력 필드 -->
+                <div class="form-group mx-sm-1 mb-2" id="normalSearchField">
+                    <input type="text" class="form-control" name="search" style="width: 200px;"
+                           <c:if test="${search.search != null}">value="${search.search}"</c:if>>
+                </div>
+
+                <!-- 날짜 검색 필드 -->
+                <div class="form-group mx-sm-1 mb-2" id="dateSearchFields" style="display: none;">
+                    <input type="text" class="form-control" id="startDate" name="startDate"
+                           placeholder="시작일" style="width: 120px;" readonly>
+                    <span class="mx-1">~</span>
+                    <input type="text" class="form-control" id="endDate" name="endDate"
+                           placeholder="종료일" style="width: 120px;" readonly>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+        </div>
+    </div>
+    <table class="table table-hover" id="table">
+        <thead class="thead-dark text-center">
+        <tr>
+            <th>이미지</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>등록일자</th>
+        </thead>
+        <tbody class="text-center">
+        <c:forEach var="item" items="${pageInfo.getList()}">
+            <tr style="cursor: pointer;" onclick="location.href='<c:url value="/item/detail"/>?id=${item.itemId}'">
+                <td class="align-middle"><img src="<c:url value="/images"/>/${item.imgName}" alt="${item.itemName}"
+                                              style="width: 75px; height: 75px"></td>
+                <td class="align-middle">${item.itemName}</td>
+                <td class="align-middle"><fmt:formatNumber value="${item.itemPrice}" type="currency" currencySymbol=""/>원</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <jsp:include page="../nav.jsp"/>
+</div>
