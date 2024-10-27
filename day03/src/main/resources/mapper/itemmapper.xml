@@ -8,7 +8,6 @@
         SELECT * FROM item WHERE 1=1
         <if test="keyword == 'name'">AND item_name LIKE CONCAT('%',#{search},'%')</if>
         <if test="keyword == 'price'">AND item_price = #{search}</if>
-        <if test="keyword == 'date'">AND reg_date BETWEEN #{startDate} AND #{endDate}</if>
     </select>
 
     <select id="selectOne" parameterType="Integer" resultType="ItemDTO">
