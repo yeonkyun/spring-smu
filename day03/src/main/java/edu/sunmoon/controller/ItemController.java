@@ -63,20 +63,31 @@ public class ItemController {
         return "index";
     }
 
-    @RequestMapping("/search")
-    public String searchimpl(Model model, Search search, @RequestParam(value = "pageNo", defaultValue = "1") int pageNo) {
-        log.info("item search page called");
-        PageInfo<ItemDTO> pageInfo;
-        try {
-            pageInfo = new PageInfo<>(itemService.search(search, pageNo), pageNo);
-            model.addAttribute("pageInfo", pageInfo);
-            model.addAttribute("target", "item");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    @GetMapping("/search")
+    public String search(
+            Model model,
+            Search search,
+            @RequestParam(defaultValue = "1") int pageNo) {
 
-        model.addAttribute("left", dir + "left");
-        model.addAttribute("center", dir + "get");
+        log.info("Searching items with criteria: {}, page: {}", search, pageNo);
+
+        try {
+            List<ItemDTO> searchResults = itemService.search(search, pageNo);
+            PageInfo<ItemDTO> pageInfo = new PageInfo<>(searchResults, pageNo);
+
+            return populateModel(model, pageInfo);
+        } catch (Exception e) {
+            log.error("Failed to search items: {}", e.getMessage(), e);
+            throw new RuntimeException("아이템 검색 중 오류가 발생했습니다", e);
+        }
+    }
+
+    private String populateModel(Model model, PageInfo<ItemDTO> pageInfo) {
+        model.addAttribute("pageInfo", pageInfo)
+                .addAttribute("target", "item")
+                .addAttribute("left", dir + "left")
+                .addAttribute("center", dir + "get");
+
         return "index";
     }
 
