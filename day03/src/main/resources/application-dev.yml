@@ -30,3 +30,8 @@ app:
     uploadimgdir: /Users/yeonkyun/IdeaProjects/spring-smu/images/
     logs: file:///Users/yeonkyun/IdeaProjects/spring-smu/logs/
     readlogdir: /Users/yeonkyun/IdeaProjects/spring-smu/logs/
+  key:
+    wkey: ENC(QdOsjLohLq1MPwpHZYB9hMyr+NY0bXXyORg1vRQEnmXS59mZAkg+vRNof9FFPDLTkMZLaMkMQ9NHNu8bI2/ZJQFb304B3s/MIJnouj5n9u9qUhyp2smp4mXRaqQz3KdpVmVZZSxLehC6Le73m78zGA==)
+    wkey2: ENC(AGzLAgsPMOJE5zDYsXEricMGvjB/S1GVF2ZFRTuO9qjnlj/sMv6d/xF0pAuzWJkn)
+    algo: PBEWithMD5AndDES
+    skey: mykey

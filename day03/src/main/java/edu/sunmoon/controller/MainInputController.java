@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class MainInputController {
     final CustomerService customerService;
+    final BCryptPasswordEncoder encoder;
 
     @RequestMapping("/loginimpl")
     public String loginimpl(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw, HttpSession session) {
@@ -28,7 +30,7 @@ public class MainInputController {
         try {
             customerDTO = customerService.get(id);
 
-            if (customerDTO != null && customerDTO.getCustomerPw().equals(pw)) {
+            if (encoder.matches(pw, customerDTO.getCustomerPw())) {
                 session.setAttribute("loginid", customerDTO);
                 model.addAttribute("center", "loginok");
                 return "redirect:/";
@@ -53,6 +55,7 @@ public class MainInputController {
     public String loginimpl(Model model, CustomerDTO customerDTO, HttpSession session) throws DuplicateKeyException, Exception {
         log.info("Customer Info: " + customerDTO.toString());
         try {
+            customerDTO.setCustomerPw(encoder.encode(customerDTO.getCustomerPw()));
             customerService.add(customerDTO);
         } catch (DuplicateKeyException e) {
             throw e;

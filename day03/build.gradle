@@ -58,6 +58,10 @@ dependencies {
     // paging
     implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.4.6'
 
+    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+
     // test
     testImplementation 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
