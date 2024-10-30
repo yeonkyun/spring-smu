@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +41,8 @@
 
 <div class="text-center bg-dark text-white" style="padding: 50px">
     <h1 onclick="location.href='<c:url value="/"/>'" style="cursor: pointer;">SW몰입형 학기제 연습장</h1>
+    <h1><spring:message code="site.title"/></h1>
+    <p><spring:message code="site.tel"/></p>
 <%--    <img src="<c:url value="/img/1000001.jpg"/> ">--%>
 <%--    <img src="<c:url value="/images/Apple%20May%20Event.png"/> ">--%>
 </div>

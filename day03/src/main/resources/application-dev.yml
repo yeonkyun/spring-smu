@@ -12,6 +12,11 @@ spring:
     view:
       prefix: /views/
       suffix: .jsp
+  messages:
+    basename: messages/message
+    encoding: utf-8
+    cache-duration: 10
+    fallback-to-system-locale: false
 
 # MyBatis Setting
 mybatis:
