@@ -52,7 +52,6 @@ public class ChartsRestController {
         jsonObject.put("data", jsonArray1);
 
         jsonArray.add(jsonObject);
-        log.info(jsonArray.toJSONString());
 
         // [{}]
         // {'x':[], result:[{}]}
@@ -60,7 +59,6 @@ public class ChartsRestController {
         result.put("x",timeArray );
         result.put("endtime",endTime );
         result.put("endline",Float.parseFloat(endline) );
-        log.info(result.toJSONString());
         return result;
     }
 
@@ -109,7 +107,6 @@ public class ChartsRestController {
 
             jsonObject.put("data", jsonArray1);
             jsonArray.add(jsonObject);
-            log.info(result.toJSONString());
 
             result.put("time", timeArray);
             result.put("data", jsonArray);

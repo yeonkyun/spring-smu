@@ -30,3 +30,6 @@ app:
     uploadimgdir: /Users/yeonkyun/IdeaProjects/spring-smu/images/
     logs: file:///Users/yeonkyun/IdeaProjects/spring-smu/logs/
     readlogdir: /Users/yeonkyun/IdeaProjects/spring-smu/logs/
+  key:
+    algo: PBEWithMD5AndDES
+    skey: mykey
