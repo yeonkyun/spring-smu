@@ -30,6 +30,10 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <%-- Web Socket Lib    --%>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <style>
         .fakeimg {
             height: 200px;
@@ -80,6 +84,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/cart" />">장바구니</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/websocket" />">채팅</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/chat" />">채팅</a>
                 </li>
             </c:if>
             <li class="nav-item">

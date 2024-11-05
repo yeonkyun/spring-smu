@@ -19,6 +19,9 @@ public class MainController {
     @Value("${app.dir.uploadimgdir}")
     private String uploadImgDir;
 
+    @Value("${app.url.server-url}")
+    private String serverUrl;
+
     @RequestMapping("/")
     public String main(Model model) {
         log.info("index page called");
@@ -63,5 +66,21 @@ public class MainController {
         String imgname = file.getOriginalFilename();
         FileUploadUtil.saveFile(file, uploadImgDir);
         return imgname;
+    }
+
+    @RequestMapping("/websocket")
+    public String websocket(Model model) {
+        log.info("websocket page called");
+        model.addAttribute("center", "websocket");
+        model.addAttribute("serverurl", serverUrl);
+        return "index";
+    }
+
+    @RequestMapping("/chat")
+    public String chat(Model model) {
+        log.info("chat page called");
+        model.addAttribute("center", "chat");
+        model.addAttribute("serverurl", serverUrl);
+        return "index";
     }
 }
