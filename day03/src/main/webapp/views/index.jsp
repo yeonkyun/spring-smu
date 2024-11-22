@@ -40,6 +40,12 @@
             background: #aaa;
         }
     </style>
+
+    <script>
+        $(function(){
+            chatbtn.init();
+        });
+    </script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 

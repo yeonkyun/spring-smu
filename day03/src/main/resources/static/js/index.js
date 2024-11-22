@@ -46,13 +46,11 @@ let javascript5 = {
             alert("아이디를 입력해주세요.");
             $("#id").focus();
             return;
-        }
-        else if (pw === "") {
+        } else if (pw === "") {
             alert("비밀번호를 입력해주세요.");
             $("#pw").focus();
             return;
-        }
-        else {
+        } else {
             this.send();
         }
     },
@@ -64,3 +62,25 @@ let javascript5 = {
         $("#login_form").submit();
     }
 }
+
+let chatbtn = {
+    init: function () {
+        const scrollBtn = document.createElement("button");
+        scrollBtn.innerHTML = "chatbot";
+        scrollBtn.setAttribute("id", "scroll-btn");
+        document.body.appendChild(scrollBtn);
+        scrollBtn.classList.add("show");
+        scrollBtn.addEventListener("click", function () {
+            location.href = '/chatbot';
+        });
+
+        const scrollBtn2 = document.createElement("button");
+        scrollBtn2.innerHTML = "1:1";
+        scrollBtn2.setAttribute("id", "scroll-btn2");
+        document.body.appendChild(scrollBtn2);
+        scrollBtn2.classList.add("show");
+        scrollBtn2.addEventListener("click", function () {
+            location.href = '/websocket';
+        });
+    }
+};
