@@ -26,11 +26,11 @@ public class MainController {
     @Value("${app.url.server-url}")
     private String serverUrl;
 
-    @Value("${naver.api.gateway-url}")
-    private String naverApiGatewayUrl;
+    @Value("${naver.api.ocr.gateway-url}")
+    private String OCRGatewayUrl;
 
-    @Value("${naver.api.secret-key}")
-    private String naverApiSecretKey;
+    @Value("${naver.api.ocr.secret-key}")
+    private String OCRSecretKey;
 
     @RequestMapping("/")
     public String main(Model model) {
@@ -105,7 +105,7 @@ public class MainController {
         String imgname = ocrDto.getImage().getOriginalFilename();
 
         FileUploadUtil.saveFile(ocrDto.getImage(), uploadImgDir);
-        JSONObject jsonObject = OCRUtil.getResult(uploadImgDir, imgname, naverApiGatewayUrl, naverApiSecretKey);
+        JSONObject jsonObject = OCRUtil.getResult(uploadImgDir, imgname, OCRGatewayUrl, OCRSecretKey);
         Map<String, String> map = OCRUtil.getData(jsonObject);
 
         model.addAttribute("result",map);
