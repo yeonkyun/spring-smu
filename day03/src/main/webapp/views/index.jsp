@@ -97,6 +97,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/chat" />">채팅</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/webrtc" />">webrtc</a>
+                </li>
             </c:if>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/about" />">더보기</a>

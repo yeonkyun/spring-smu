@@ -43,6 +43,14 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/webrtc")
+    public String webrtc(Model model) {
+        model.addAttribute("serverurl", serverUrl);
+        model.addAttribute("roomId", "1");    // 하드코딩된 roomId
+        model.addAttribute("center", "webrtc");
+        return "index";
+    }
+
     @RequestMapping("/logout")
     public String logout(HttpSession httpSession) {
         if (httpSession != null) {

@@ -119,4 +119,12 @@ public class MainController {
         model.addAttribute("center","chatbot");
         return "index";
     }
+
+    @RequestMapping("/webrtc")
+    public String webrtc(Model model){
+        model.addAttribute("center","webrtc");
+        model.addAttribute("serverurl", serverUrl);
+        model.addAttribute("roomId", 1);
+        return "index";
+    }
 }
