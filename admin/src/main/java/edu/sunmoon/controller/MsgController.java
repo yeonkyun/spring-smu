@@ -1,8 +1,10 @@
 package edu.sunmoon.controller;
 
 import edu.sunmoon.app.dto.Msg;
+import edu.sunmoon.util.PapagoUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -12,6 +14,12 @@ import org.springframework.stereotype.Controller;
 public class MsgController {
     @Autowired
     SimpMessagingTemplate template;
+
+    @Value("${app.key.papago-id}")
+    String ClientId;
+
+    @Value("${app.key.papago-secret}")
+    String ClientSecret;
 
     @MessageMapping("/receiveall") // 모두에게 전송
     public void receiveall(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
@@ -31,6 +39,9 @@ public class MsgController {
         String target = msg.getReceiveid();
         log.info("-------------------------");
         log.info(target);
+        String text = msg.getContent1();
+        String result = PapagoUtil.getMsg(ClientId, ClientSecret, text, "ko");
+        msg.setContent1(result);
 
         template.convertAndSend("/send/to/"+target,msg);
     }
